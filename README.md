@@ -1,4 +1,4 @@
-# nodde-auth
+# node-auth
 
 ### How to use
 
