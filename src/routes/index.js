@@ -7,9 +7,6 @@ routes.get("/", (request, response) => {
   response.send("ok");
 });
 
-routes.get("/login", (request, response) => {
-  response.send("login");
-});
 routes.post("/login", LoginController.login);
 
 module.exports = routes;
