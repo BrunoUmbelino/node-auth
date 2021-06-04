@@ -4,7 +4,7 @@ const LoginController = require("../controller/LoginController");
 const routes = express.Router();
 
 routes.get("/", (request, response) => {
-  response.send("ok");
+  response.send("server ok");
 });
 
 routes.post("/login", LoginController.login);
