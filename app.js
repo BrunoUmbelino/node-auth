@@ -2,6 +2,7 @@ const express = require("express");
 const routes = require("./src/routes");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 
@@ -10,6 +11,6 @@ app.use(bodyParser.json());
 
 app.use(routes);
 
-app.listen(3333, () => {
+app.listen(process.env.PORT || 3333, () => {
   console.log("server running");
 });
