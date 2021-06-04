@@ -17,7 +17,7 @@ const auth = async (email, password) => {
         applicationId: process.env.APPLICATION_ID,
       },
     });
-    return authData;
+    return authData.data;
   } catch (err) {
     console.log("===============================");
     console.log(err.response.status, err.response.statusText);

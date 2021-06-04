@@ -8,12 +8,12 @@ const login = async (request, response) => {
   if (error) return response.status(400).send(error.details[0].message);
 
   try {
-    const response = await auth(email, password);
+    const authData = await auth(email, password);
     const userAuthorization = {
-      token: response.token,
-      username: response.user.username,
+      token: authData.token,
+      username: authData.user.username,
     };
-    return response.json(userAuthorization);
+    return response.json(cd);
   } catch (err) {
     response.status(404).send("username or password is invalid");
   }
