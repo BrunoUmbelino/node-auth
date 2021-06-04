@@ -13,7 +13,7 @@ const login = async (request, response) => {
       token: authData.token,
       username: authData.user.username,
     };
-    return response.json(cd);
+    return response.json(userAuthorization);
   } catch (err) {
     response.status(404).send("username or password is invalid");
   }
