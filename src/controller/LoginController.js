@@ -1,4 +1,4 @@
-const { auth } = require("../services/auth");
+const { auth } = require("../service/auth");
 const { loginValidation } = require("../validations");
 
 const login = async (request, response) => {
