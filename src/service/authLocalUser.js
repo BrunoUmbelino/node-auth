@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("./model/User");
+const User = require("../model/User");
 
 const authLocalUser = async (email, password) => {
   try {

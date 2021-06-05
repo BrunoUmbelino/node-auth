@@ -1,4 +1,4 @@
-const authUser = require("../authLocalUser");
+const authLocalUser = require("../service/authLocalUser");
 const { authFusionAPI } = require("../service/authFusionAPI");
 const { loginDataValidation } = require("../dataValidations");
 

@@ -1,11 +1,11 @@
-const { userValidation } = require("../dataValidations");
+const { userDataValidation } = require("../dataValidations");
 const bcryptjs = require("bcryptjs");
 const User = require("../model/User");
 
 const register = async (request, response) => {
   const { email, password } = request.body;
 
-  const { error } = userValidation({ email, password });
+  const { error } = userDataValidation({ email, password });
   if (error) return response.status(400).send(error.details[0].message);
 
   const emailExist = await User.findOne({ email: email });
