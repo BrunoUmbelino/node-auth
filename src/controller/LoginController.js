@@ -1,21 +1,29 @@
-const { auth } = require("../service/auth");
-const { loginValidation } = require("../validations");
+const authUser = require("../authLocalUser");
+const { authFusionAPI } = require("../service/authFusionAPI");
+const { loginDataValidation } = require("../dataValidations");
 
 const login = async (request, response) => {
   const { email, password } = request.body;
 
-  const { error } = loginValidation({ email, password });
+  const { error } = loginDataValidation({ email, password });
   if (error) return response.status(400).send(error.details[0].message);
 
   try {
-    const authData = await auth(email, password);
-    const userAuthorization = {
-      token: authData.token,
-      username: authData.user.username,
-    };
-    return response.json(userAuthorization);
+    const authLocal = await authLocalUser(email, password);
+    if (!authLocal.error)
+      return response.json({
+        token: authLocal.token,
+        username: authLocal.username,
+      });
+
+    const authFusion = await authFusionAPI(email, password);
+    return response.json({
+      token: authFusion.token,
+      username: authFusion.user.email,
+    });
   } catch (err) {
-    response.status(404).send("username or password is invalid");
+    console.log(err);
+    response.status(400).send("Username or password is invalid.");
   }
 };
 

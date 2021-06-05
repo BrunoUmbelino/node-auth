@@ -1,4 +1,4 @@
-const { userValidation } = require("../validations");
+const { userValidation } = require("../dataValidations");
 const bcryptjs = require("bcryptjs");
 const User = require("../model/User");
 

@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 require("dotenv").config();
 
-const auth = async (email, password) => {
+const authFusionAPI = async (email, password) => {
   try {
     const authData = await axios({
       method: "post",
@@ -19,11 +19,13 @@ const auth = async (email, password) => {
     });
     return authData.data;
   } catch (err) {
-    console.log("===============================");
-    console.log(err.response.status, err.response.statusText);
-    console.log("===============================");
+    console.log(
+      "Request Fusion: ",
+      err.response.status,
+      err.response.statusText
+    );
     return;
   }
 };
 
-module.exports = { auth };
+module.exports = { authFusionAPI };
